@@ -1,0 +1,32 @@
+https://ajbraus.github.io/sequelize-it/#/?id=index
+
+$ npm i sequelize pg pg-hstore sequelize-cli
+$ npm i sequelize-cli -g
+
+Set up a .sequelizerc file puts all sequelize stuff into a folder 
+called /db.
+
+const path = require('path');
+ module.exports = {
+   "config": path.resolve('./db/config', 'config.json'),
+   "models-path": path.resolve('./db/models'),
+   "seeders-path": path.resolve('./db/seeders'),
+   "migrations-path": path.resolve('./db/migrations')
+ };
+
+npx sequelize init
+ 
+modify config/config.json
+
+npx sequelize model:create --name Event --attributes title:string,desc:text
+npx sequelize db:migrate
+npx sequelize migration:create --name add-img-url-to-events
+
+npx sequelize model:create --name Rsvp --attributes name:string,email:string
+npx sequelize db:migrate
+npx sequelize migration:create --name add-event-id-to-rsvps
+npx sequelize db:migrate
+
+npx sequelize db:migrate:undo
+npx sequelize db:migrate:undo:all --to 20211030052738-add-event-id-to-rsvps
+npx sequelize db:migrate:undo:all --to 20211030081034-add-event-id-to-rsvps

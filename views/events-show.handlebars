@@ -1,0 +1,36 @@
+<!-- views/events-show.handlebars -->
+
+<div class="row m-4">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="text-left">
+            <a href="/events/{{event.id}}/edit">Edit</a>
+        </div>
+        <img class="img-fluid w-75 mx-auto rounded mb-3" src="{{event.imgUrl}}" alt="Card image cap">
+        {{!-- <small class="text-muted">Created on: {{event.createdAt}}</small> --}}
+        <h3>{{event.title}}</h3>
+        <div class="lead">{{event.desc}}</div>
+    </div>
+</div>
+<div class="row m-4">
+    <div class="col-lg-6 offset-lg-3">
+        <b>RSVPs ({{rsvps.length}})</b>
+        <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
+
+        <div class="list-group">
+            {{#each rsvps}}
+            <div class="list-group-item clearfix">
+                <div class="float-left">
+                    {{this.name}}
+                </div>
+                <div class="float-right">
+                    <form class="form-inline" action="/events/{{event.id}}/rsvps/{{this.id}}?_method=DELETE"
+                        method="post">
+                        <button type="submit" class="btn btn-link btn-sm">Remove</button>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
