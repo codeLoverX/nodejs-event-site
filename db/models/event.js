@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: DataTypes.STRING //add this line (don't forget the comma above!)
   }, {
     sequelize,
-    modelName: 'Events',
+    modelName: 'Event',
   });
   Event.associate = function(models) {
     Event.hasMany(models.Rsvp);

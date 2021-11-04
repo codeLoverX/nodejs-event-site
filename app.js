@@ -24,6 +24,6 @@ rsvpsController(app, models);
 
 
 // const port = process.env.PORT;
-app.listen(process.env.PORT , () => {
+app.listen(process.env.PORT || 3001 , () => {
   console.log('App listening on port 3001!')
 })
