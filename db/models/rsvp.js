@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Rsvp',
+    modelName: 'Rsvps',
   });
   Rsvp.associate = function(models) {
     Rsvp.belongsTo(models.Event); // EventId
