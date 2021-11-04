@@ -8,7 +8,7 @@ module.exports = {
       { 
         type: Sequelize.INTEGER,
         references: { //Required field
-          model: 'Events',
+          model: 'Event',
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
