@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Event',
+    tableName: 'Events'
   });
   Event.associate = function(models) {
     Event.hasMany(models.Rsvp);
